@@ -1,27 +1,29 @@
 'use strict';
 const {
-    getLeaderboards
+    getLeaderboards, getLeaderboardsToday, postLeaderboards
 } = require('./handler');
 
 module.exports = [
     {
         method: 'GET',
         path: '/',
-        handler: getLeaderboards,
+        handler: (request, h) => {
+            return h.response('Hello, world!');
+            },
     },
     {
         method: 'GET',
         path: '/leaderboards/today',
-        handler: (request, h) => {return 'Hello World!'},
+        handler: getLeaderboardsToday,
     },
     {
         method: 'GET',
         path: '/leaderboards/alltime',
-        handler: (request, h) => {return 'Hello World!'},
+        handler: getLeaderboards,
     },
     {
         method: 'POST',
         path: '/leaderboards',
-        handler: (request, h) => {return 'Hello World!'},
+        handler: postLeaderboards,
     },
 ];
